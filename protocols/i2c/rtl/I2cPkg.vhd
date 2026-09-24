@@ -178,11 +178,7 @@ package I2cPkg is
 
    type I2cAxiLiteDevArray is array (natural range <>) of I2cAxiLiteDevType;
 
-   constant I2C_AXIL_DEV_ARRAY_DEFAULT_C : I2cAxiLiteDevArray(0 to 3) := (
-      0 => (MakeI2cAxiLiteDevType("0000000", 8, 8, '0')),
-      1 => (MakeI2cAxiLiteDevType("0000010", 16, 16, '0')),
-      2 => (MakeI2cAxiLiteDevType("0000100", 32, 8, '0')),
-      3 => (MakeI2cAxiLiteDevType("0001000", 32, 32, '0')));
+   constant I2C_AXIL_DEV_ARRAY_DEFAULT_C : I2cAxiLiteDevArray(0 to 3);
 
    function maxAddrSize (constant devMap : I2cAxiLiteDevArray) return natural;
 
@@ -267,5 +263,11 @@ package body I2cPkg is
       end loop;
       return ret;
    end function maxAddrSize;
+
+   constant I2C_AXIL_DEV_ARRAY_DEFAULT_C : I2cAxiLiteDevArray(0 to 3) := (
+      0 => (MakeI2cAxiLiteDevType("0000000", 8, 8, '0')),
+      1 => (MakeI2cAxiLiteDevType("0000010", 16, 16, '0')),
+      2 => (MakeI2cAxiLiteDevType("0000100", 32, 8, '0')),
+      3 => (MakeI2cAxiLiteDevType("0001000", 32, 32, '0')));
 
 end package body I2cPkg;

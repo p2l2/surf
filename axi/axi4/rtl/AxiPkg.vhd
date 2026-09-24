@@ -223,11 +223,7 @@ package AxiPkg is
       constant LEN_BITS_C   : in natural range 0 to 8                      := 4)
       return AxiConfigType;
 
-   constant AXI_CONFIG_INIT_C : AxiConfigType := axiConfig(
-      ADDR_WIDTH_C => 32,
-      DATA_BYTES_C => 4,
-      ID_BITS_C    => 12,
-      LEN_BITS_C   => 4);
+   constant AXI_CONFIG_INIT_C : AxiConfigType;
 
    function axiWriteMasterInit (
       constant AXI_CONFIG_C : in AxiConfigType;
@@ -467,5 +463,11 @@ package body AxiPkg is
 
       return(tempSlv);
    end function getAxiReadBytes;
+
+   constant AXI_CONFIG_INIT_C : AxiConfigType := axiConfig(
+      ADDR_WIDTH_C => 32,
+      DATA_BYTES_C => 4,
+      ID_BITS_C    => 12,
+      LEN_BITS_C   => 4);
 
 end package body AxiPkg;

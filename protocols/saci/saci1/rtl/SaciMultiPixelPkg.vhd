@@ -52,11 +52,11 @@ package SaciMultiPixelPkg is
    function getNumColumns (version       : slv) return integer;
    function getWordsPerSuperRow (version : slv) return integer;
 
-   constant NCOL_C                 : integer := getNumColumns(FPGA_VERSION_C);
+   constant NCOL_C                 : integer;
    --Number of columns in ePix "super row"
    -- (columns / ch) * (channels / asic) * (asics / row) / (adc values / word)
    -- constant WORDS_PER_SUPER_ROW_C : integer := NCOL_C * 4 * 2 / 2;
-   constant WORDS_PER_SUPER_ROW_C  : integer := getWordsPerSuperRow(FPGA_VERSION_C);
+   constant WORDS_PER_SUPER_ROW_C  : integer;
    constant EPIX100_COLS_PER_ROW   : integer := 96;
    constant EPIX10K_COLS_PER_ROW   : integer := 48;
    constant EPIXS_COLS_PER_ROW     : integer := 10;
@@ -197,5 +197,8 @@ package body SaciMultiPixelPkg is
          localCol := asicCol - NCOL_C * 3;
       end if;
    end procedure globalToLocalPixelEpix100A;
+
+   constant NCOL_C                : integer := getNumColumns(FPGA_VERSION_C);
+   constant WORDS_PER_SUPER_ROW_C : integer := getWordsPerSuperRow(FPGA_VERSION_C);
 
 end package body SaciMultiPixelPkg;

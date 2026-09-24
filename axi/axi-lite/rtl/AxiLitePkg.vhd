@@ -101,9 +101,9 @@ package AxiLitePkg is
       rdata : slv(31 downto 0) := (others => '0'))
       return AxiLiteReadSlaveType;
 
-   constant AXI_LITE_READ_SLAVE_EMPTY_OK_C     : AxiLiteReadSlaveType := axiLiteReadSlaveEmptyInit(rresp => AXI_RESP_OK_C);
-   constant AXI_LITE_READ_SLAVE_EMPTY_SLVERR_C : AxiLiteReadSlaveType := axiLiteReadSlaveEmptyInit(rresp => AXI_RESP_SLVERR_C);
-   constant AXI_LITE_READ_SLAVE_EMPTY_DECERR_C : AxiLiteReadSlaveType := axiLiteReadSlaveEmptyInit(rresp => AXI_RESP_DECERR_C);
+   constant AXI_LITE_READ_SLAVE_EMPTY_OK_C     : AxiLiteReadSlaveType;
+   constant AXI_LITE_READ_SLAVE_EMPTY_SLVERR_C : AxiLiteReadSlaveType;
+   constant AXI_LITE_READ_SLAVE_EMPTY_DECERR_C : AxiLiteReadSlaveType;
 
    -- Array
    type AxiLiteReadSlaveArray is array (natural range<>) of AxiLiteReadSlaveType;
@@ -169,9 +169,9 @@ package AxiLitePkg is
       bresp : slv(1 downto 0) := AXI_RESP_OK_C)
       return AxiLiteWriteSlaveType;
 
-   constant AXI_LITE_WRITE_SLAVE_EMPTY_OK_C     : AxiLiteWriteSlaveType := axiLiteWriteSlaveEmptyInit(bresp => AXI_RESP_OK_C);
-   constant AXI_LITE_WRITE_SLAVE_EMPTY_SLVERR_C : AxiLiteWriteSlaveType := axiLiteWriteSlaveEmptyInit(bresp => AXI_RESP_SLVERR_C);
-   constant AXI_LITE_WRITE_SLAVE_EMPTY_DECERR_C : AxiLiteWriteSlaveType := axiLiteWriteSlaveEmptyInit(bresp => AXI_RESP_DECERR_C);
+   constant AXI_LITE_WRITE_SLAVE_EMPTY_OK_C     : AxiLiteWriteSlaveType;
+   constant AXI_LITE_WRITE_SLAVE_EMPTY_SLVERR_C : AxiLiteWriteSlaveType;
+   constant AXI_LITE_WRITE_SLAVE_EMPTY_DECERR_C : AxiLiteWriteSlaveType;
 
 
    -- Array
@@ -1228,6 +1228,13 @@ package body AxiLitePkg is
       if (i) then return t; else return e; end if;
    end function ite;
 
+   constant AXI_LITE_READ_SLAVE_EMPTY_OK_C     : AxiLiteReadSlaveType := axiLiteReadSlaveEmptyInit(rresp => AXI_RESP_OK_C);
+   constant AXI_LITE_READ_SLAVE_EMPTY_SLVERR_C : AxiLiteReadSlaveType := axiLiteReadSlaveEmptyInit(rresp => AXI_RESP_SLVERR_C);
+   constant AXI_LITE_READ_SLAVE_EMPTY_DECERR_C : AxiLiteReadSlaveType := axiLiteReadSlaveEmptyInit(rresp => AXI_RESP_DECERR_C);
+
+   constant AXI_LITE_WRITE_SLAVE_EMPTY_OK_C     : AxiLiteWriteSlaveType := axiLiteWriteSlaveEmptyInit(bresp => AXI_RESP_OK_C);
+   constant AXI_LITE_WRITE_SLAVE_EMPTY_SLVERR_C : AxiLiteWriteSlaveType := axiLiteWriteSlaveEmptyInit(bresp => AXI_RESP_SLVERR_C);
+   constant AXI_LITE_WRITE_SLAVE_EMPTY_DECERR_C : AxiLiteWriteSlaveType := axiLiteWriteSlaveEmptyInit(bresp => AXI_RESP_DECERR_C);
 
 end package body AxiLitePkg;
 

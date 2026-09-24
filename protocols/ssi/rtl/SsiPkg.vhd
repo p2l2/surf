@@ -57,7 +57,7 @@ package SsiPkg is
       return AxiStreamConfigType;
 
    -- A default SSI config is useful to have
-   constant SSI_CONFIG_INIT_C : AxiStreamConfigType := ssiAxiStreamConfig(16);
+   constant SSI_CONFIG_INIT_C : AxiStreamConfigType;
 
    -------------------------------------------------------------------------------------------------
    -- SSI Records and AXI-Stream conversion functions
@@ -302,5 +302,7 @@ package body SsiPkg is
       axisMaster.tLast  := '0';
       axisMaster.tUser  := (others => '0');
    end procedure;
+
+   constant SSI_CONFIG_INIT_C : AxiStreamConfigType := ssiAxiStreamConfig(16);
 
 end package body SsiPkg;
